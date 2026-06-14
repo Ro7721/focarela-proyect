@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-BackfocarelaApplication<backfocarela>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.epiis.backfocarela.BackfocarelaApplication",
+            "projectName": "backfocarela",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
