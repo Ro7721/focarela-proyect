@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Login from './components/Login';
-import Sidebar from './components/Sidebar';
-import Dashboard from './components/Dashboard';
-import Pedidos from './components/Pedidos';
+import Login from './pages/Login/Login';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Pedidos from './pages/Pedidos/Pedidos';
+import MainLayout from './layout/MainLayout';
 
 function App() {
   const [logueado, setLogueado] = useState(false);
@@ -13,11 +13,10 @@ function App() {
   }
 
   return (
-    <div style={{ display: 'flex' }}>
-      <Sidebar activo={pagina} onCambiarPagina={setPagina} />
+    <MainLayout pagina={pagina} onCambiarPagina={setPagina}>
       {pagina === 'Dashboard' && <Dashboard />}
       {pagina === 'Pedidos' && <Pedidos />}
-    </div>
+    </MainLayout>
   );
 }
 
