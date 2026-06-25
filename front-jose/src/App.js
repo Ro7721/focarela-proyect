@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Login from './pages/Login/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Pedidos from './pages/Pedidos/Pedidos';
+import Caja from './pages/Caja/Caja';
 import MainLayout from './layout/MainLayout';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <MainLayout pagina={pagina} onCambiarPagina={setPagina}>
       {pagina === 'Dashboard' && <Dashboard />}
       {pagina === 'Pedidos' && <Pedidos />}
+      {pagina === 'Caja' && <Caja />}
     </MainLayout>
   );
 }
