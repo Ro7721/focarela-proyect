@@ -5,6 +5,8 @@ import Pedidos from './pages/Pedidos/Pedidos';
 import Caja from './pages/Caja/Caja';
 import Inventario from './pages/Inventario/Inventario';
 import Gastos from './pages/Gastos/Gastos';
+import WebAdmin from './pages/WebAdmin/WebAdmin';
+import Reportes from './pages/Reportes/Reportes';
 import MainLayout from './layout/MainLayout';
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
       {pagina === 'Caja' && <Caja />}
       {pagina === 'Inventario' && <Inventario />}
       {pagina === 'Gastos' && <Gastos />}
+      {pagina === 'Web Admin' && <WebAdmin />}
+      {pagina === 'Reportes' && <Reportes />}
     </MainLayout>
   );
 }
