@@ -1,12 +1,7 @@
 package com.epiis.backfocarela.model;
 
-import java.time.LocalDate;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import java.time.LocalDateTime;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,12 +12,18 @@ import lombok.Setter;
 public class Pedido {
     @Id
     private String idPedido;
-    @ManyToOne()
-    @JoinColumn(name = "idUsuario") 
+
+    @ManyToOne
+    @JoinColumn(name = "idUsuario", nullable = false)
     private Usuario usuario;
-    @ManyToOne()
-    @JoinColumn(name = "idCliente")
+
+    @ManyToOne
+    @JoinColumn(name = "idCliente", nullable = false)
     private Cliente cliente;
-    private LocalDate fecha; 
-    private Boolean estado; 
+
+    @Column(nullable = false)
+    private LocalDateTime fecha = LocalDateTime.now();
+
+    @Column(nullable = false, length = 30)
+    private String estado;
 }
