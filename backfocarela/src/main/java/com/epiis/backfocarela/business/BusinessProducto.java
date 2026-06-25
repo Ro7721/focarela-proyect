@@ -11,16 +11,16 @@ import com.epiis.backfocarela.dto.response.ResponseProducto;
 import com.epiis.backfocarela.message.GenericResponse;
 import com.epiis.backfocarela.model.Categoria;
 import com.epiis.backfocarela.model.Producto;
-import com.epiis.backfocarela.repository.CategoriapRepo;
+import com.epiis.backfocarela.repository.CategoriaRepo;
 import com.epiis.backfocarela.repository.ProductoRepo;
 
 @Service
 public class BusinessProducto {
     private final ProductoRepo productoRepo;
-    private final CategoriapRepo categoriaRepo;
+    private final CategoriaRepo categoriaRepo;
 
     public BusinessProducto(ProductoRepo productoRepo,
-            CategoriapRepo categoriaRepo) {
+            CategoriaRepo categoriaRepo) {
         this.productoRepo = productoRepo;
         this.categoriaRepo = categoriaRepo;
     }

@@ -10,14 +10,14 @@ import com.epiis.backfocarela.dto.request.RequestCategoria;
 import com.epiis.backfocarela.dto.response.ResponseCategoria;
 import com.epiis.backfocarela.message.GenericResponse;
 import com.epiis.backfocarela.model.Categoria;
-import com.epiis.backfocarela.repository.CategoriapRepo;
+import com.epiis.backfocarela.repository.CategoriaRepo;
 
 @Service
 public class BusinessCategoria {
 
-    private final CategoriapRepo categoriapRepo;
+    private final CategoriaRepo categoriapRepo;
 
-    public BusinessCategoria(CategoriapRepo categoriapRepo) {
+    public BusinessCategoria(CategoriaRepo categoriapRepo) {
         this.categoriapRepo = categoriapRepo;
     }
 
