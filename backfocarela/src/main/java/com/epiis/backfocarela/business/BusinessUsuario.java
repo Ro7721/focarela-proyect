@@ -63,7 +63,8 @@ public class BusinessUsuario {
         usuario.setFechaCreacion(LocalDate.now());
 
         usuarioRepo.save(usuario);
-
+        response.success();
+        response.addMessage("Usuario registrado correctamente.");
         return mapUsuario(usuario);
     }
 

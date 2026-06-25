@@ -11,6 +11,7 @@ import com.epiis.backfocarela.dto.response.ResponseUsuario;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping(path = "usuario")
+@CrossOrigin(origins = "*")
 public class UsuarioController {
     private final BusinessUsuario businessUsuario;
 
@@ -28,21 +30,21 @@ public class UsuarioController {
     }
 
     // Crear
-    @PostMapping("/registrar")
+    @PostMapping(path = "insertar")
     public ResponseEntity<ResponseUsuario> registrar(@RequestBody RequestUsuario request) {
 
         return ResponseEntity.ok(businessUsuario.insert(request));
     }
 
     // Listar
-    @GetMapping("/listar")
+    @GetMapping(path = "listar")
     public ResponseEntity<List<ResponseUsuario>> listar() {
 
         return ResponseEntity.ok(businessUsuario.getAll());
     }
 
     // Buscar por id
-    @GetMapping("/{idUsuario}")
+    @GetMapping(path = "buscar/{idUsuario}")
     public ResponseEntity<ResponseUsuario> buscarPorId(
             @PathVariable String idUsuario) {
 
@@ -50,7 +52,7 @@ public class UsuarioController {
     }
 
     // Buscar por nombre
-    @GetMapping("/buscar")
+    @GetMapping(path = "buscar")
     public ResponseEntity<List<ResponseUsuario>> buscar(
             @RequestParam String nombre) {
 
@@ -58,7 +60,7 @@ public class UsuarioController {
     }
 
     // Actualizar
-    @PutMapping("/{idUsuario}")
+    @PutMapping(path = "actualizar/{idUsuario}")
     public ResponseEntity<ResponseUsuario> actualizar(
             @PathVariable String idUsuario,
             @RequestBody RequestUsuario request) {
@@ -67,7 +69,7 @@ public class UsuarioController {
     }
 
     // Eliminar
-    @DeleteMapping("/{idUsuario}")
+    @DeleteMapping(path = "eliminar/{idUsuario}")
     public ResponseEntity<String> eliminar(
             @PathVariable String idUsuario) {
 
