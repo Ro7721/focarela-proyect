@@ -1,0 +1,172 @@
+.pedidos-page {
+  flex: 1;
+  padding: 32px;
+  background: #fdf6ec;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.pedidos-header h1 {
+  margin: 0 0 20px;
+  color: #1a1a1a;
+}
+
+.pedidos-tabs {
+  display: flex;
+  gap: 28px;
+  border-bottom: 1px solid #e8d9c5;
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding-bottom: 10px;
+  color: #888;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.tab.activo {
+  color: #c0392b;
+  font-weight: bold;
+  border-bottom: 2px solid #c0392b;
+}
+
+.pedidos-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+}
+
+.menu-card, .carrito-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.menu-card h3, .carrito-card h3 {
+  margin: 0 0 18px;
+  color: #1a1a1a;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.producto-card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 18px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.producto-card:hover {
+  border-color: #e67e22;
+  background: #fff8f0;
+}
+
+.producto-icono {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.producto-nombre {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.producto-precio {
+  color: #c0392b;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.carrito-vacio {
+  color: #aaa;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.carrito-lista {
+  margin-bottom: 12px;
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.quitar-btn {
+  background: none;
+  border: none;
+  color: #c0392b;
+  cursor: pointer;
+  margin-left: 8px;
+  font-size: 13px;
+}
+
+.carrito-total {
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  color: #c0392b;
+  margin: 12px 0 20px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.form-field {
+  flex: 1;
+  text-align: left;
+}
+
+.form-field label {
+  font-size: 13px;
+  color: #555;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.registrar-btn {
+  width: 100%;
+  padding: 14px;
+  background: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.registrar-nota {
+  text-align: center;
+  font-size: 11px;
+  color: #999;
+  margin-top: 10px;
+}
