@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Pedidos.css';
+import Topbar from '../../components/Topbar';
 
 const productos = [
   { id: 1, nombre: 'Pizza Americana', precio: 32.00, icono: '🍕' },
@@ -51,21 +52,13 @@ function Pedidos() {
 
   return (
     <div className="pedidos-page">
-      <div className="pedidos-header">
-        <h1>🍕 Pedidos</h1>
-      </div>
+      <Topbar titulo="🍕 Pedidos" />
 
       <div className="pedidos-tabs">
-        <span
-          className={vista === 'nuevo' ? 'tab activo' : 'tab'}
-          onClick={() => setVista('nuevo')}
-        >
+        <span className={vista === 'nuevo' ? 'tab activo' : 'tab'} onClick={() => setVista('nuevo')}>
           Nuevo Pedido
         </span>
-        <span
-          className={vista === 'activos' ? 'tab activo' : 'tab'}
-          onClick={() => setVista('activos')}
-        >
+        <span className={vista === 'activos' ? 'tab activo' : 'tab'} onClick={() => setVista('activos')}>
           Pedidos Activos
         </span>
       </div>
@@ -87,7 +80,6 @@ function Pedidos() {
 
           <div className="carrito-card">
             <h3>Carrito</h3>
-
             {carrito.length === 0 ? (
               <p className="carrito-vacio">Carrito vacío</p>
             ) : (
@@ -103,18 +95,11 @@ function Pedidos() {
                 ))}
               </div>
             )}
-
             <div className="carrito-total">Total: S/ {total.toFixed(2)}</div>
-
             <div className="form-row">
               <div className="form-field">
                 <label>Cliente</label>
-                <input
-                  type="text"
-                  placeholder="Nombre cliente"
-                  value={cliente}
-                  onChange={e => setCliente(e.target.value)}
-                />
+                <input type="text" placeholder="Nombre cliente" value={cliente} onChange={e => setCliente(e.target.value)} />
               </div>
               <div className="form-field">
                 <label>Tipo</label>
@@ -125,7 +110,6 @@ function Pedidos() {
                 </select>
               </div>
             </div>
-
             <div className="form-row">
               <div className="form-field">
                 <label>Método Pago</label>
@@ -143,13 +127,10 @@ function Pedidos() {
                 </select>
               </div>
             </div>
-
             <button className="registrar-btn" onClick={registrarPedido}>
               🍕 Registrar Pedido
             </button>
-            <p className="registrar-nota">
-              Al registrar: se crea ingreso en caja y actualiza inventario
-            </p>
+            <p className="registrar-nota">Al registrar: se crea ingreso en caja y actualiza inventario</p>
           </div>
         </div>
       ) : (

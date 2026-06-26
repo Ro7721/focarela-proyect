@@ -1,6 +1,7 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import './Dashboard.css';
+import Topbar from '../../components/Topbar';
 
 const stats = [
   { value: 'S/ 155.00', label: 'Ventas Hoy', icon: '💰', badge: '+12% vs ayer', badgeType: 'green' },
@@ -35,16 +36,7 @@ const inventarioCritico = [];
 function Dashboard() {
   return (
     <main className="main-content">
-      <header className="topbar">
-        <h1>Dashboard</h1>
-        <div className="user-box">
-          <div className="user-info">
-            <span className="user-name">Tito León Bazán</span>
-            <span className="user-role">Administrador</span>
-          </div>
-          <div className="avatar">TL</div>
-        </div>
-      </header>
+      <Topbar titulo="Dashboard" />
 
       <section className="stats-grid">
         {stats.map((stat) => (

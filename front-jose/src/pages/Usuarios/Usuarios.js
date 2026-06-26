@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Usuarios.css';
+import Topbar from '../../components/Topbar';
 
 const usuariosIniciales = [
   { id: 1, usuario: 'admin', nombre: 'Tito León Bazán', rol: 'Administrador', acceso: 'Todo', estado: 'Activo' },
@@ -15,27 +16,33 @@ const accesoPorRol = {
 
 function Usuarios() {
   const [usuarios, setUsuarios] = useState(usuariosIniciales);
+  const [modalAbierto, setModalAbierto] = useState(false);
+  const [nuevoUsuario, setNuevoUsuario] = useState('');
+  const [nuevoNombre, setNuevoNombre] = useState('');
+  const [nuevoRol, setNuevoRol] = useState('Cajero');
 
-  const agregarUsuario = () => {
-    const usuario = prompt('Nombre de usuario (ej: cajero2):');
-    if (!usuario) return;
-    const nombre = prompt('Nombre completo:');
-    if (!nombre) return;
-    const rol = prompt('Rol (Administrador, Cajero, Cocina):', 'Cajero');
-    if (!rol || !accesoPorRol[rol]) {
-      alert('Rol no válido. Usa: Administrador, Cajero o Cocina.');
-      return;
-    }
+  const abrirModal = () => {
+    setNuevoUsuario('');
+    setNuevoNombre('');
+    setNuevoRol('Cajero');
+    setModalAbierto(true);
+  };
 
+  const cerrarModal = () => setModalAbierto(false);
+
+  const confirmarAgregar = () => {
+    if (!nuevoUsuario.trim()) { alert('Ingresa el nombre de usuario.'); return; }
+    if (!nuevoNombre.trim()) { alert('Ingresa el nombre completo.'); return; }
     const nuevo = {
       id: Date.now(),
-      usuario,
-      nombre,
-      rol,
-      acceso: accesoPorRol[rol],
+      usuario: nuevoUsuario,
+      nombre: nuevoNombre,
+      rol: nuevoRol,
+      acceso: accesoPorRol[nuevoRol],
       estado: 'Activo',
     };
     setUsuarios(prev => [...prev, nuevo]);
+    cerrarModal();
   };
 
   const toggleEstado = (id) => {
@@ -54,14 +61,56 @@ function Usuarios() {
 
   return (
     <div className="usuarios-page">
-      <div className="usuarios-header">
-        <h1>👥 Usuarios</h1>
-      </div>
+
+      {modalAbierto && (
+        <div className="modal-overlay" onClick={cerrarModal}>
+          <div className="modal-card" onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Agregar Usuario</h2>
+              <span className="modal-cerrar" onClick={cerrarModal}>✕</span>
+            </div>
+            <div className="modal-body">
+              <div className="modal-field">
+                <label>Nombre de usuario</label>
+                <input
+                  type="text"
+                  placeholder="Ej: cajero2"
+                  value={nuevoUsuario}
+                  onChange={e => setNuevoUsuario(e.target.value)}
+                />
+              </div>
+              <div className="modal-field">
+                <label>Nombre completo</label>
+                <input
+                  type="text"
+                  placeholder="Ej: Rosa García"
+                  value={nuevoNombre}
+                  onChange={e => setNuevoNombre(e.target.value)}
+                />
+              </div>
+              <div className="modal-field">
+                <label>Rol</label>
+                <select value={nuevoRol} onChange={e => setNuevoRol(e.target.value)}>
+                  <option>Administrador</option>
+                  <option>Cajero</option>
+                  <option>Cocina</option>
+                </select>
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button className="modal-cancelar" onClick={cerrarModal}>Cancelar</button>
+              <button className="modal-registrar" onClick={confirmarAgregar}>Agregar</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <Topbar titulo="👥 Usuarios" />
 
       <section className="usuarios-card">
         <div className="usuarios-top">
           <h3>Gestión de Usuarios y Roles (RNF Seguridad)</h3>
-          <button className="agregar-usuario-btn" onClick={agregarUsuario}>
+          <button className="agregar-usuario-btn" onClick={abrirModal}>
             + Agregar Usuario
           </button>
         </div>

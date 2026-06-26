@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Inventario.css';
+import Topbar from '../../components/Topbar';
 
 const insumosIniciales = [
   { id: 1, nombre: 'Masa', stock: 50, unidad: 'unid', minimo: 10 },
@@ -13,34 +14,42 @@ const insumosIniciales = [
 
 function Inventario() {
   const [insumos, setInsumos] = useState(insumosIniciales);
+  const [modalAbierto, setModalAbierto] = useState(false);
+  const [insumoId, setInsumoId] = useState(insumosIniciales[0].id);
+  const [cantidad, setCantidad] = useState('');
+  const [proveedor, setProveedor] = useState('');
+
+  const abrirModal = () => {
+    setInsumoId(insumos[0].id);
+    setCantidad('');
+    setProveedor('');
+    setModalAbierto(true);
+  };
+
+  const cerrarModal = () => setModalAbierto(false);
 
   const registrarCompra = () => {
-    const nombre = prompt('¿Qué insumo quieres reabastecer?');
-    if (!nombre) return;
-    const insumo = insumos.find(i => i.nombre.toLowerCase() === nombre.toLowerCase());
-    if (!insumo) {
-      alert('Insumo no encontrado en la lista.');
+    const cant = parseFloat(cantidad);
+    if (isNaN(cant) || cant <= 0) {
+      alert('Ingresa una cantidad válida.');
       return;
     }
-    const cantidad = parseFloat(prompt(`¿Cuánto stock agregamos a "${insumo.nombre}"?`, '10'));
-    if (isNaN(cantidad) || cantidad <= 0) return;
-
+    const insumo = insumos.find(i => i.id === Number(insumoId));
     setInsumos(prev =>
-      prev.map(i => i.id === insumo.id ? { ...i, stock: i.stock + cantidad } : i)
+      prev.map(i => i.id === insumo.id ? { ...i, stock: i.stock + cant } : i)
     );
-    alert(`Compra registrada: +${cantidad} ${insumo.unidad} de ${insumo.nombre}`);
+    alert(`Compra registrada:\n+${cant} ${insumo.unidad} de ${insumo.nombre}\nProveedor: ${proveedor || 'No especificado'}`);
+    cerrarModal();
   };
 
   return (
     <div className="inventario-page">
-      <div className="inventario-header">
-        <h1>📦 Inventario</h1>
-      </div>
+      <Topbar titulo="📦 Inventario" />
 
       <section className="inventario-card">
         <div className="inventario-top">
           <h3>Control de Insumos (RF37-RF39)</h3>
-          <button className="registrar-compra-btn" onClick={registrarCompra}>
+          <button className="registrar-compra-btn" onClick={abrirModal}>
             + Registrar Compra
           </button>
         </div>
@@ -79,6 +88,39 @@ function Inventario() {
           ✓ Actualización automática al registrar pedidos (RF38) - Consulta en tiempo real (RF39)
         </p>
       </section>
+
+      {modalAbierto && (
+        <div className="modal-overlay" onClick={cerrarModal}>
+          <div className="modal-card" onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>Registrar Compra de Insumos</h2>
+              <span className="modal-cerrar" onClick={cerrarModal}>✕</span>
+            </div>
+            <div className="modal-body">
+              <div className="modal-field">
+                <label>Insumo</label>
+                <select value={insumoId} onChange={e => setInsumoId(e.target.value)}>
+                  {insumos.map(i => (
+                    <option key={i.id} value={i.id}>{i.nombre} ({i.unidad})</option>
+                  ))}
+                </select>
+              </div>
+              <div className="modal-field">
+                <label>Cantidad</label>
+                <input type="number" value={cantidad} onChange={e => setCantidad(e.target.value)} placeholder="0" />
+              </div>
+              <div className="modal-field">
+                <label>Proveedor</label>
+                <input type="text" value={proveedor} onChange={e => setProveedor(e.target.value)} placeholder="Ej: Distribuidora Abancay" />
+              </div>
+            </div>
+            <div className="modal-footer">
+              <button className="modal-cancelar" onClick={cerrarModal}>Cancelar</button>
+              <button className="modal-registrar" onClick={registrarCompra}>Registrar</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

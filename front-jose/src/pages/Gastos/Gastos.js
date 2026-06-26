@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Gastos.css';
-
+import Topbar from '../../components/Topbar';
 const gastosIniciales = [
   { id: 1, fecha: '2026-06-15', tipo: 'Alquiler', descripcion: 'Local Av. Perú', monto: 1200.00 },
   { id: 2, fecha: '2026-06-15', tipo: 'Ingredientes', descripcion: 'Compra queso y masa', monto: 350.00 },
@@ -47,9 +47,7 @@ function Gastos() {
 
   return (
     <div className="gastos-page">
-      <div className="gastos-header">
-        <h1>📉 Gastos</h1>
-      </div>
+  <Topbar titulo="📉 Gastos" />
 
       <section className="gastos-grid">
         <div className="gastos-card">

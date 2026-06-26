@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SunatInterno.css';
+import Topbar from '../../components/Topbar';
 
 const comprobantesSunat = [
   { serie: 'B001', numero: '000124', tipo: 'Boleta', cliente: 'María López', monto: 76.00, estado: 'Aceptado' },
@@ -15,9 +16,7 @@ function SunatInterno() {
 
   return (
     <div className="sunat-page">
-      <div className="sunat-header">
-        <h1>📄 SUNAT / Interno</h1>
-      </div>
+      <Topbar titulo="📄 SUNAT / Interno" />
 
       <section className="sunat-card">
         <div className="aviso-box">
@@ -26,16 +25,10 @@ function SunatInterno() {
         </div>
 
         <div className="sunat-tabs">
-          <span
-            className={tab === 'SUNAT' ? 'tab activo' : 'tab'}
-            onClick={() => setTab('SUNAT')}
-          >
+          <span className={tab === 'SUNAT' ? 'tab activo' : 'tab'} onClick={() => setTab('SUNAT')}>
             SUNAT
           </span>
-          <span
-            className={tab === 'Interno' ? 'tab activo' : 'tab'}
-            onClick={() => setTab('Interno')}
-          >
+          <span className={tab === 'Interno' ? 'tab activo' : 'tab'} onClick={() => setTab('Interno')}>
             Interno
           </span>
         </div>

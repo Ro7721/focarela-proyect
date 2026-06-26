@@ -1,6 +1,6 @@
 import React from 'react';
 import './Sidebar.css';
-
+import logoFocarela from '../assets/logo_focarela.png';
 const menuItems = [
   { icon: '📊', label: 'Dashboard' },
   { icon: '🍕', label: 'Pedidos' },
@@ -17,10 +17,9 @@ function Sidebar({ activo, onCambiarPagina }) {
   return (
     <div className="sidebar">
       <div className="sidebar-logo">
-        <span className="sidebar-logo-icon">🍕</span>
-        <span className="sidebar-logo-text">FOCARELA</span>
-      </div>
-
+  <img src={logoFocarela} alt="Focarela" className="sidebar-logo-img" />
+  <span className="sidebar-logo-text">FOCARELA</span>
+</div>
       <div className="sidebar-menu">
         {menuItems.map(item => (
           <div

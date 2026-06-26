@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './Reportes.css';
+import Topbar from '../../components/Topbar';
 
 const datosIniciales = [
   { periodo: 'Sem 1', ingresos: 320, gastos: 280 },
@@ -37,9 +38,7 @@ function Reportes() {
 
   return (
     <div className="reportes-page">
-      <div className="reportes-header">
-        <h1>📈 Reportes</h1>
-      </div>
+      <Topbar titulo="📈 Reportes" />
 
       <section className="reportes-card">
         <h3>Reportes (RF29-RF34)</h3>

@@ -5,7 +5,9 @@ function MainLayout({ pagina, onCambiarPagina, children }) {
   return (
     <div style={{ display: 'flex' }}>
       <Sidebar activo={pagina} onCambiarPagina={onCambiarPagina} />
-      {children}
+      <div style={{ flex: 1 }}>
+        {children}
+      </div>
     </div>
   );
 }
