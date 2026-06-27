@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.epiis.backfocarela.dto.request.RequestLogin;
 import com.epiis.backfocarela.dto.request.RequestUsuario;
 import com.epiis.backfocarela.dto.response.ResponseUsuario;
 import com.epiis.backfocarela.message.GenericResponse;
@@ -126,6 +127,30 @@ public class BusinessUsuario {
         response.success();
         response.addMessage("Usuario actualizado correctamente.");
         return mapUsuario(usuario);
+    }
+
+    // LOGIN
+    public ResponseUsuario login(RequestLogin request) {
+        ResponseUsuario response = new ResponseUsuario();
+
+        Usuario usuario = usuarioRepo.findByCorreo(request.getCorreo()).orElse(null);
+
+        if (usuario == null || !passwordEncryptor.matches(request.getPassword(), usuario.getPassword())) {
+            response.error();
+            response.addMessage("Correo o contraseña incorrectos");
+            return response;
+        }
+
+        if (Boolean.FALSE.equals(usuario.getEstado())) {
+            response.error();
+            response.addMessage("El usuario está inactivo");
+            return response;
+        }
+
+        ResponseUsuario data = mapUsuario(usuario);
+        data.success();
+        data.addMessage("Inicio de sesión correcto.");
+        return data;
     }
 
     // ELIMINAR

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.epiis.backfocarela.business.BusinessUsuario;
+import com.epiis.backfocarela.dto.request.RequestLogin;
 import com.epiis.backfocarela.dto.request.RequestUsuario;
 import com.epiis.backfocarela.dto.response.ResponseUsuario;
 
@@ -33,6 +34,13 @@ public class UsuarioController {
     public ResponseEntity<ResponseUsuario> registrar(@RequestBody RequestUsuario request) {
 
         return ResponseEntity.ok(businessUsuario.insert(request));
+    }
+
+    // Login
+    @PostMapping(path = "login")
+    public ResponseEntity<ResponseUsuario> login(@RequestBody RequestLogin request) {
+
+        return ResponseEntity.ok(businessUsuario.login(request));
     }
 
     // Listar

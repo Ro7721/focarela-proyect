@@ -1,0 +1,175 @@
+.gastos-page {
+  flex: 1;
+  padding: 32px;
+  background: #fdf6ec;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.gastos-header h1 {
+  margin: 0 0 24px;
+  color: #1a1a1a;
+}
+
+.gastos-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.gastos-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.gastos-card h3 {
+  margin: 0 0 18px;
+  color: #1a1a1a;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-field {
+  flex: 1;
+}
+
+.form-field label {
+  font-size: 13px;
+  color: #555;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.tipo-select-row {
+  display: flex;
+  gap: 8px;
+}
+
+.tipo-select-row select {
+  flex: 1;
+}
+
+.add-tipo-btn {
+  width: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 16px;
+  color: #555;
+}
+
+.guardar-gasto-btn {
+  width: 100%;
+  padding: 14px;
+  background: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 6px;
+}
+
+.total-mes {
+  font-size: 30px;
+  font-weight: bold;
+  color: #c0392b;
+  margin: 0 0 20px;
+}
+
+.desglose-tipo {
+  display: flex;
+  flex-direction: column;
+}
+
+.desglose-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+  color: #333;
+}
+
+.desglose-item:last-child {
+  border-bottom: none;
+}
+
+.desglose-monto {
+  font-weight: bold;
+}
+
+.historial-card {
+  overflow-x: auto;
+}
+
+.gastos-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.gastos-table th {
+  text-align: left;
+  font-size: 12px;
+  color: #999;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.gastos-table td {
+  padding: 14px 0;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.tipo-pill {
+  background: #f0f0f0;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #555;
+}
+
+.monto-rojo {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.accion-btn {
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.accion-btn.editar {
+  color: #555;
+}
+
+.accion-btn.eliminar {
+  color: #c0392b;
+  border-color: #f5c6c0;
+}
