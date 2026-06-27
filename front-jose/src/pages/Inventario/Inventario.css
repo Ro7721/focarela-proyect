@@ -1,0 +1,100 @@
+.inventario-page {
+  flex: 1;
+  padding: 32px;
+  background: #fdf6ec;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.inventario-header h1 {
+  margin: 0 0 24px;
+  color: #1a1a1a;
+}
+
+.inventario-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.inventario-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.inventario-top h3 {
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.registrar-compra-btn {
+  background: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.inventario-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.inventario-table th {
+  text-align: left;
+  font-size: 12px;
+  color: #999;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+}
+
+.inventario-table td {
+  padding: 14px 0;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.insumo-nombre {
+  font-weight: 600;
+}
+
+.stock-ok {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.stock-critico {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.estado-pill {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.estado-pill.ok {
+  background: #eafaf1;
+  color: #27ae60;
+}
+
+.estado-pill.critico {
+  background: #fdecea;
+  color: #c0392b;
+}
+
+.inventario-nota {
+  font-size: 12px;
+  color: #999;
+  margin: 16px 0 0;
+}
