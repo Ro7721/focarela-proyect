@@ -1,17 +1,29 @@
 import React, { useState } from 'react';
 import './Caja.css';
 
-const metodosIniciales = [
-  { nombre: 'Efectivo', monto: 0 },
-  { nombre: 'Yape', monto: 0 },
-  { nombre: 'Plin', monto: 0 },
-  { nombre: 'Tarjeta', monto: 0 },
-];
+function calcularMetodos(movimientos) {
+  const metodos = [
+    { nombre: 'Efectivo', monto: 0 },
+    { nombre: 'Yape/Plin', monto: 0 },
+    { nombre: 'Tarjeta', monto: 0 },
+  ];
+  movimientos.forEach(m => {
+    const encontrado = metodos.find(mt => mt.nombre === m.metodo);
+    if (encontrado) {
+      encontrado.monto += m.monto;
+    } else {
+      metodos.push({ nombre: m.metodo, monto: m.monto });
+    }
+  });
+  return metodos;
+}
 
 function Caja() {
-  const [movimientos, setMovimientos] = useState([]);
-  const [metodos, setMetodos] = useState(metodosIniciales);
+  const [movimientos, setMovimientos] = useState(
+    JSON.parse(localStorage.getItem('movimientos_caja') || '[]')
+  );
 
+  const metodos = calcularMetodos(movimientos);
   const ingresosHoy = movimientos.reduce((sum, m) => sum + m.monto, 0);
   const pedidosHoy = movimientos.length;
   const ticketPromedio = pedidosHoy > 0 ? ingresosHoy / pedidosHoy : 0;
@@ -24,6 +36,8 @@ function Caja() {
     alert(
       `Cierre de Caja Diario\n\nTotal: S/ ${ingresosHoy.toFixed(2)}\nPedidos: ${pedidosHoy}\n\nResumen guardado en histórico.`
     );
+    localStorage.removeItem('movimientos_caja');
+    setMovimientos([]);
   };
 
   return (
@@ -72,49 +86,36 @@ function Caja() {
 
       <section className="caja-card">
         <h3>Movimientos de Hoy - Tiempo Real (RF3)</h3>
-        {movimientos.length === 0 ? (
-          <table className="movimientos-table">
-            <thead>
-              <tr>
-                <th>HORA</th>
-                <th>PEDIDO #</th>
-                <th>CONCEPTO (RF4)</th>
-                <th>MÉTODO</th>
-                <th>INGRESO</th>
-              </tr>
-            </thead>
-            <tbody>
+        <table className="movimientos-table">
+          <thead>
+            <tr>
+              <th>HORA</th>
+              <th>PEDIDO #</th>
+              <th>CONCEPTO (RF4)</th>
+              <th>MÉTODO</th>
+              <th>INGRESO</th>
+            </tr>
+          </thead>
+          <tbody>
+            {movimientos.length === 0 ? (
               <tr>
                 <td colSpan="5" className="sin-movimientos">
                   Aún no hay movimientos registrados hoy.
                 </td>
               </tr>
-            </tbody>
-          </table>
-        ) : (
-          <table className="movimientos-table">
-            <thead>
-              <tr>
-                <th>HORA</th>
-                <th>PEDIDO #</th>
-                <th>CONCEPTO (RF4)</th>
-                <th>MÉTODO</th>
-                <th>INGRESO</th>
-              </tr>
-            </thead>
-            <tbody>
-              {movimientos.map((m, i) => (
+            ) : (
+              movimientos.map((m, i) => (
                 <tr key={i}>
                   <td>{m.hora}</td>
-                  <td>{m.pedido}</td>
+                  <td>{i + 1}</td>
                   <td>{m.concepto}</td>
                   <td>{m.metodo}</td>
                   <td>S/ {m.monto.toFixed(2)}</td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+              ))
+            )}
+          </tbody>
+        </table>
       </section>
     </div>
   );
