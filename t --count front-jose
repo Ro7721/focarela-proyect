@@ -1,0 +1,27 @@
+[33m89890f7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfront-jose[m[33m, [m[1;31morigin/front-jose[m[33m)[m Agrego logo Focarela en Sidebar y modal de Registrar Compra en Inventario
+[33m0c51b3a[m Creo pantallas de SUNAT/Interno y Usuarios - Frontend completo
+[33mf88b2b3[m Creo pantallas de web admin y repostes
+[33m60e13dd[m Creo pantallas de Inventario y Gastos
+[33m690851e[m Creo pantalla de Caja
+[33mb91e784[m[33m ([m[1;31morigin/back-roger[m[33m)[m subiendo los cambios de cosrs
+[33mcbbf5c4[m subiendo lo cambios de producto contorlador, business, repo
+[33m2e61d65[m subiendo los cambios de categoria
+[33m1838354[m subiendo los cambios de usuario
+[33mde4e50c[m subiendo los cambios
+[33m1a0deba[m subiendo los cambios de insertar, listar usuario
+[33mb705229[m Reestructuro proyecto: pages, layout, api, services, core
+[33me73ec10[m Creo pantalla de Pedidos y separo Sidebar reutilizable
+[33m6c0dc16[m Organizo carpetas y conecto Login con Dashboard
+[33mc9911df[m Subiendo BussinesUsuario
+[33mc70fab8[m Merge branch 'back-roger' of https://github.com/Ro7721/focarela-proyect into back-erick
+[33ma9c25a6[m subiendo los response y request de usuario
+[33mdb0392f[m subiendo los cambios de controlador, repositorio, dtos
+[33m704d406[m subiendo la base de datos
+[33mdef4df3[m subiendo los cambios de los melos
+[33m7c5ce96[m subien BD
+[33madf96ea[m conectando el Backend con la BD
+[33m9f395ab[m Agrego pantalla de login FOCARELA
+[33m3901e6c[m Creo proyecto React front-jose
+[33m606455b[m[33m ([m[1;31morigin/test-gerardo[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/front-illari[m[33m, [m[1;31morigin/back-erick[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m subiendo el backend
+[33m74cc92e[m cambios de roger
+[33m1b846da[m primer commit

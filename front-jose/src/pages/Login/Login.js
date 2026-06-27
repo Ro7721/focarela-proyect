@@ -50,7 +50,7 @@ function Login({ onLogin }) {
           </button>
 
           <p className="login-demo">
-            Demo: usuario <strong>admin</strong> / contraseña <strong>focarela</strong>
+           bienvenido a focarela pizza's 
           </p>
         </div>
 

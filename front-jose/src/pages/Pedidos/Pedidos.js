@@ -135,7 +135,7 @@ function Pedidos() {
         </div>
       ) : (
         <div className="menu-card">
-          <p>Aquí se mostrarán los pedidos activos (próximamente).</p>
+          <p>no hay datos cargados </p>
         </div>
       )}
     </div>
